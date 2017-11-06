@@ -5,6 +5,7 @@ package main
 
 import (
 	"fmt"
+	"reflect"
 )
 
 type student struct {
@@ -32,5 +33,9 @@ func main() {
 	fmt.Println(s1)
 	fmt.Println(t1)
 	fmt.Println(c1)
+	ss := reflect.TypeOf(t1).Elem()
+	for i := 0; i < ss.NumField(); i++ {
+		fmt.Println("tag=", ss.Field(i).Tag, ";name=", ss.Field(i).Name)
+	}
 
 }
